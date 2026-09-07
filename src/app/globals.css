@@ -27,6 +27,8 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-display: var(--font-syne);
+  --font-grotesk: var(--font-bricolage);
+  --font-editorial: var(--font-instrument-serif);
   --font-condensed: var(--font-bebas);
 }
 
@@ -71,6 +73,16 @@ textarea {
 
 .font-display {
   font-family: var(--font-syne), var(--font-sans), sans-serif;
+}
+
+.font-grotesk {
+  font-family: var(--font-bricolage), var(--font-sans), sans-serif;
+  font-optical-sizing: auto;
+  font-stretch: 108%;
+}
+
+.font-editorial {
+  font-family: var(--font-instrument-serif), Georgia, serif;
 }
 
 .font-condensed {
@@ -125,6 +137,26 @@ textarea {
     linear-gradient(rgba(10, 10, 10, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(10, 10, 10, 0.05) 1px, transparent 1px);
   background-size: 28px 28px;
+}
+
+.impact-dot-grid {
+  background-image: radial-gradient(
+    circle,
+    rgba(18, 16, 14, 0.16) 0.85px,
+    transparent 1.05px
+  );
+  background-size: 17px 17px;
+  opacity: 0.42;
+  animation: impact-grid-drift 56s linear infinite;
+}
+
+@keyframes impact-grid-drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 17px 17px;
+  }
 }
 
 .ruled-paper {
@@ -210,7 +242,8 @@ textarea {
 @media (prefers-reduced-motion: reduce) {
   .marquee,
   .spin-slow,
-  .grain-shift {
+  .grain-shift,
+  .impact-dot-grid {
     animation: none;
   }
 }

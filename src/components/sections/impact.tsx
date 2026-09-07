@@ -1,35 +1,33 @@
 import Image from "next/image";
 import { Reveal } from "@/components/reveal";
+import { ImpactField } from "@/components/sections/impact-field";
 import { site, stats } from "@/lib/data";
 
 export function Impact() {
   return (
-    <section className="bg-white py-20 md:py-28">
-      <div className="mx-auto max-w-[1440px] px-5 md:px-8">
+    <section className="relative overflow-hidden bg-white py-20 md:py-28">
+      <div
+        aria-hidden
+        className="impact-dot-grid pointer-events-none absolute inset-0 z-0 [mask-image:linear-gradient(to_bottom,transparent,black_8%,black_92%,transparent)]"
+      />
+      <ImpactField />
+      <div className="relative z-10 mx-auto max-w-[1440px] px-5 md:px-8">
         <Reveal>
           <span className="inline-flex rounded-full border border-black/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">
             Better digital journeys.
           </span>
         </Reveal>
-        <div className="mt-6 grid items-end gap-10 lg:grid-cols-[1.4fr_auto_220px]">
+        <div className="mt-6 grid items-end gap-10 lg:grid-cols-[1.4fr_220px]">
           <Reveal delay={0.05} className="min-w-0">
-            <h2 className="max-w-full font-display text-[clamp(2.35rem,6.2vw+0.85rem,6rem)] font-extrabold leading-[0.95] tracking-[-0.04em] break-words">
+            <h2 className="max-w-full font-grotesk text-[clamp(2.5rem,6.6vw+0.85rem,6.5rem)] font-extrabold leading-[0.86] tracking-[-0.045em] break-words">
               My impact{" "}
-              <span className="text-black/30">through</span>{" "}
-              <span className="text-black/30">engineering</span> experience
+              <span className="font-editorial font-normal italic tracking-[-0.005em] text-black/40">
+                through engineering
+              </span>{" "}
+              experience
             </h2>
           </Reveal>
-          <Reveal delay={0.1}>
-            <svg viewBox="0 0 80 80" className="size-24 text-black/20 md:size-32" aria-hidden>
-              <path
-                d="M40 4 L43 32 L76 40 L43 48 L40 76 L37 48 L4 40 L37 32 Z"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.2"
-              />
-            </svg>
-          </Reveal>
-          <Reveal delay={0.15} className="hidden lg:block">
+          <Reveal delay={0.1} className="hidden lg:block">
             <div className="relative h-48 overflow-hidden rounded-2xl">
               <Image
                 src={site.portrait}
@@ -45,8 +43,8 @@ export function Impact() {
         <div className="mt-16 grid gap-4 md:grid-cols-3">
           {stats.map((stat, i) => (
             <Reveal key={stat.value} delay={i * 0.08}>
-              <article className="rounded-3xl border border-black/6 bg-white p-5 shadow-[0_20px_50px_rgba(10,10,10,0.05)] sm:p-7">
-                <p className="font-display text-5xl font-extrabold tracking-tight sm:text-6xl">
+              <article className="relative rounded-3xl border border-black/6 bg-white/92 p-5 shadow-[0_20px_50px_rgba(10,10,10,0.05)] backdrop-blur-[2px] sm:p-7">
+                <p className="font-grotesk text-5xl font-extrabold tracking-[-0.045em] sm:text-6xl">
                   {stat.value}
                   <span className="ml-1 text-orange">*</span>
                 </p>
