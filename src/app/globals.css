@@ -30,6 +30,7 @@
   --font-grotesk: var(--font-bricolage);
   --font-editorial: var(--font-instrument-serif);
   --font-condensed: var(--font-bebas);
+  --font-geometric: var(--font-jost);
 }
 
 * {
@@ -202,6 +203,54 @@ textarea {
   }
 }
 
+.marquee-reverse {
+  animation: marquee-reverse 32s linear infinite;
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Tailwind utilities are layered, so they lose to the unlayered rules above.
+   Duration and hover-pause have to be set here to take effect. */
+.marquee-row .marquee,
+.marquee-row .marquee-reverse {
+  animation-duration: 60s;
+}
+
+.marquee-row:hover .marquee,
+.marquee-row:hover .marquee-reverse {
+  animation-play-state: paused;
+}
+
+.dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.13) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Brighter copy of the same grid, revealed only around the cursor. */
+.dot-grid-glow {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.85) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(
+    220px circle at var(--dx, 50%) var(--dy, 50%),
+    #000 0%,
+    rgba(0, 0, 0, 0.4) 45%,
+    transparent 72%
+  );
+  mask-image: radial-gradient(
+    220px circle at var(--dx, 50%) var(--dy, 50%),
+    #000 0%,
+    rgba(0, 0, 0, 0.4) 45%,
+    transparent 72%
+  );
+}
+
 @keyframes spin-slow {
   from {
     transform: rotate(0deg);
@@ -241,6 +290,7 @@ textarea {
 
 @media (prefers-reduced-motion: reduce) {
   .marquee,
+  .marquee-reverse,
   .spin-slow,
   .grain-shift,
   .impact-dot-grid {

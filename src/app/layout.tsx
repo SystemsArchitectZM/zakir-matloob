@@ -5,6 +5,7 @@ import {
   Geist,
   Geist_Mono,
   Instrument_Serif,
+  Jost,
   Syne,
 } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -47,6 +48,12 @@ const bebas = Bebas_Neue({
   weight: "400",
 });
 
+const jost = Jost({
+  variable: "--font-jost",
+  subsets: ["latin"],
+  weight: ["300", "400"],
+});
+
 export const metadata: Metadata = {
   title: {
     default: site.name,
@@ -66,7 +73,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} ${bricolage.variable} ${instrumentSerif.variable} ${bebas.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} ${bricolage.variable} ${instrumentSerif.variable} ${bebas.variable} ${jost.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-paper text-ink">
         <Providers>{children}</Providers>
