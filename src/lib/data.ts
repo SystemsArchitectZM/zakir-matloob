@@ -22,7 +22,7 @@ export const site = {
 export const nav = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/work", label: "Work", count: "06" },
+  { href: "/work", label: "Work", count: "07" },
   { href: "/journal", label: "Journal", count: "02" },
   { href: "/contact", label: "Contact" },
 ];
@@ -84,6 +84,13 @@ export const productLocations = [
     lat: 25.2048,
     lng: 55.2708,
     label: "Global ed-tech programs",
+  },
+  {
+    id: "bahrain",
+    country: "Bahrain",
+    lat: 26.2285,
+    lng: 50.586,
+    label: "Beyond Talent",
   },
   {
     id: "usa",
@@ -198,6 +205,21 @@ export const experience = [
   },
 ];
 
+export type CaseStudyStoryStep = {
+  step: string;
+  title: string;
+  problem: string;
+  solution: string;
+  image: string;
+  imageAlt: string;
+  layout?: "wide" | "panel" | "pair";
+  companion?: {
+    image: string;
+    alt: string;
+    caption?: string;
+  };
+};
+
 export type CaseStudy = {
   slug: string;
   title: string;
@@ -210,30 +232,16 @@ export type CaseStudy = {
   outcome: string;
   stack: string[];
   image: string;
+  imageClassName?: string;
+  imageAspectClass?: string;
   featured?: boolean;
   category: string;
+  url?: string;
+  heroCaption?: string;
+  story?: CaseStudyStoryStep[];
 };
 
 export const caseStudies: CaseStudy[] = [
-  {
-    slug: "ha-engagepro",
-    title: "HA EngagePro",
-    kicker: "Enterprise workflow OS",
-    year: "2025—26",
-    tags: ["Next.js", "RBAC", "Audit workflows"],
-    summary:
-      "A state-driven engagement platform for an audit and advisory firm — approvals, permissions, and client visibility in one system.",
-    challenge:
-      "Haraik needed a single operating layer for internal staff and clients. Email threads, scattered files, and informal approvals could not survive an audit.",
-    approach:
-      "I designed a Next.js platform around explicit state machines: roles, MFA, document trails, consultation tracking, and automated communications. Every transition is attributable.",
-    outcome:
-      "Partners and clients now share a live view of progress. The firm can orchestrate multi-role work without losing the paper trail that professional services demand.",
-    stack: ["Next.js", "PostgreSQL", "RBAC", "MFA", "CI/CD"],
-    image: "/images/case-engagepro.png",
-    featured: true,
-    category: "Web Design",
-  },
   {
     slug: "malta-rentals",
     title: "Explore Malta Rentals",
@@ -250,7 +258,121 @@ export const caseStudies: CaseStudy[] = [
       "Operators get a branded booking path and a single source of availability. Guests get a fast, multilingual checkout that feels local, not bolted on.",
     stack: ["Next.js", "NestJS", "PostgreSQL", "Stripe", "i18n"],
     image: "/images/case-malta.png",
+    featured: true,
     category: "Product Engineering",
+    url: "https://exploremaltarentals.com/",
+  },
+  {
+    slug: "ha-engagepro",
+    title: "HA EngagePro",
+    kicker: "Enterprise workflow OS",
+    year: "2025—26",
+    tags: ["Next.js", "RBAC", "Audit workflows"],
+    summary:
+      "A state-driven engagement platform for an audit and advisory firm — approvals, permissions, and client visibility in one system.",
+    challenge:
+      "Haraik needed a single operating layer for internal staff and clients. Email threads, scattered files, and informal approvals could not survive an audit.",
+    approach:
+      "I designed a Next.js platform around explicit state machines: roles, MFA, document trails, consultation tracking, and automated communications. Every transition is attributable.",
+    outcome:
+      "Partners and clients now share a live view of progress. The firm can orchestrate multi-role work without losing the paper trail that professional services demand.",
+    stack: ["Next.js", "PostgreSQL", "RBAC", "MFA", "CI/CD"],
+    image: "/images/case-engagepro.png",
+    category: "Web Design",
+    url: "https://haengagepro.com/",
+  },
+  {
+    slug: "developersdoc",
+    title: "DevelopersDoc",
+    kicker: "Docs that stay honest",
+    year: "2025",
+    tags: ["AI", "Docs", "DX"],
+    summary:
+      "A developer platform for creating, generating, and sharing documentation with code — scan a repo, write the runbook, publish it to the team.",
+    challenge:
+      "Documentation dies the moment the code moves. Architecture lives in someone's head, runbooks live in Slack, and access is a forwarded tab.",
+    approach:
+      "I built a workspace that scans the repository into a Project Overview, keeps team docs in one tree, and shares them with Owner / Editor / Viewer roles instead of a link that anyone can lose.",
+    outcome:
+      "Docs become an engineering surface: generated from evidence, edited like production work, and published with a role attached.",
+    stack: ["Next.js", "TypeScript", "Prisma", "Clerk", "PostgreSQL"],
+    image: "/images/case-developersdoc-overview.png",
+    imageClassName: "object-cover object-center",
+    imageAspectClass: "aspect-[16/10]",
+    category: "Developer Tools",
+    url: "https://developersdoc.com/",
+    heroCaption:
+      "Scan a repository. The workspace writes a Project Overview from evidence — stack, routes, schema — then the rest of the docs can be edited, shared, and published.",
+    story: [
+      {
+        step: "01",
+        title: "One tree instead of five tools",
+        problem:
+          "Runbooks, generated project docs, and teaching notes scatter across Slack, Notion, and someone's laptop. New engineers inherit a scavenger hunt.",
+        solution:
+          "Dashboard, Published Docs, Projects, and Your Docs sit in one sidebar. HarAik, Software Engineering, and AI Engineering are folders in the same workspace — searchable with ⌘K.",
+        image: "/images/developersdoc-workspace-ui.png",
+        imageAlt: "Developers Doc project workspace for HarAik with documents, members, and sync status",
+      },
+      {
+        step: "02",
+        title: "Ownership is visible before the repo is connected",
+        problem:
+          "Shared folders hide who can edit, how many docs exist, and whether anything is tied to the codebase. Sync becomes a rumour.",
+        solution:
+          "Project Info lists members with Owner and Editor roles, a document count, last updated, and an explicit Sync state — including 'No codebase connected yet' so connecting git is a decision, not a mystery.",
+        image: "/images/developersdoc-project-info-ui.png",
+        imageAlt: "Project Info card showing members, document count, last updated, and sync status",
+        layout: "panel",
+      },
+      {
+        step: "03",
+        title: "Write the runbook like production work",
+        problem:
+          "Infrastructure steps — OCI Bastion, SSH tunnels, private Postgres — rot as half-remembered messages. Checklists live in chat history.",
+        solution:
+          "A structured editor with headings, checklists, code formatting, and a live table of contents. Save and Publish sit next to the page, so a runbook can ship the same day it is written.",
+        image: "/images/developersdoc-editor-ui.png",
+        imageAlt: "Rich-text editor for the Bastion SSH Tunnel Setup runbook",
+      },
+      {
+        step: "04",
+        title: "Share a project, or just the one document",
+        problem:
+          "Access is 'here's a link, good luck.' You either over-share the whole knowledge base or paste a screenshot into email.",
+        solution:
+          "Invite by email with Viewer or Editor. Share the whole project when the teammate needs the tree, or a single document when they only need the runbook.",
+        image: "/images/developersdoc-share-project-ui.png",
+        imageAlt: "Share Project modal with email invite, Viewer role, and existing editor",
+        layout: "pair",
+        companion: {
+          image: "/images/developersdoc-share-document-ui.png",
+          alt: "Share Document modal with Viewer and Editor roles and an empty shared-with state",
+          caption: "Document-level share",
+        },
+      },
+    ],
+  },
+  {
+    slug: "beyond-talent",
+    title: "Beyond Talent",
+    kicker: "GCC executive brand platform",
+    year: "2025—26",
+    tags: ["Next.js", "Brand", "Conversion"],
+    summary:
+      "A dual-audience brand site for a Bahrain executive advisory and search firm — individuals, organizations, and a flagship podcast, structured as one conversion system.",
+    challenge:
+      "A founder-led GCC consultancy had to look as considered as the rooms it sells into. Generic coaching sites collapse two buyers — high-net-worth individuals and corporate search — into one vague homepage, and the media property could not feel bolted on.",
+    approach:
+      "I built a Next.js platform around audience split as architecture: career strategy and packaged retainers for individuals, search and university pipelines for organizations, Beyond Conversations as a season archive, and a single booking router. Editorial type, founder photography, and a cream-terracotta palette set the register; packages, FAQs, and inquiry routing do the close.",
+    outcome:
+      "The firm now has a public operating layer that matches its positioning — discreet, GCC-specific, and conversion-ready — instead of a brochure that asks visitors to guess who the site is for.",
+    stack: ["Next.js", "TypeScript", "App Router", "Vercel"],
+    image: "/images/case-beyond-talent-hero.png",
+    imageClassName: "object-contain",
+    imageAspectClass: "aspect-[1024/597] bg-[#e8eef3]",
+    category: "Brand Engineering",
+    url: "https://www.thebeyondtalent.com/",
   },
   {
     slug: "legal-intelligence",
@@ -269,6 +391,7 @@ export const caseStudies: CaseStudy[] = [
     stack: ["Python", "Vector search", "RAG", "LangChain", "LLMs"],
     image: "/images/case-legal.png",
     category: "AI Systems",
+    url: "https://github.com/ZakirCodeArchitect/PakistanHigherCourtsSearchAndQASystem",
   },
   {
     slug: "ideaflow-ai",
@@ -306,24 +429,6 @@ export const caseStudies: CaseStudy[] = [
     image: "/images/case-sonic.png",
     category: "Applied AI",
   },
-  {
-    slug: "developersdoc",
-    title: "DevelopersDoc",
-    kicker: "Docs that stay honest",
-    year: "2025",
-    tags: ["AI", "Docs", "DX"],
-    summary:
-      "A developer platform for creating and syncing documentation with code, built to reduce drift between what ships and what is written.",
-    challenge:
-      "Documentation dies the moment the code moves. Teams inherit fiction.",
-    approach:
-      "I designed a workflow where docs live next to the system they describe, with AI assistance for catching drift rather than generating more of it.",
-    outcome:
-      "A working thesis: documentation is an engineering surface, not a marketing afterthought.",
-    stack: ["Next.js", "AI assistance", "Git-synced content"],
-    image: "/images/journal-lattice.png",
-    category: "Developer Tools",
-  },
 ];
 
 export const journal = [
@@ -335,7 +440,7 @@ export const journal = [
       "Most RAG failures are ingestion failures. A field note from building citation-backed legal search and firm-internal assistants.",
     date: "12 Aug 2026",
     read: "8 min",
-    image: "/images/journal-lattice.png",
+    image: "/images/journal-retrieval.png",
     tags: ["AI", "RAG", "Enterprise"],
     body: [
       "The first time I watched a language model invent a court citation, I stopped treating retrieval as a plumbing detail. The answer was fluent. It was also wrong in a way that would have embarrassed a junior associate and, in the wrong context, created liability.",

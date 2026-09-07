@@ -5,7 +5,8 @@ import Link from "next/link";
 import { caseStudies } from "@/lib/data";
 
 export function AnalogFeature() {
-  const project = caseStudies[2];
+  const project =
+    caseStudies.find((item) => item.slug === "legal-intelligence") ?? caseStudies[2];
 
   return (
     <section className="relative overflow-hidden bg-[#0c0b0a] py-28 text-white md:py-36">

@@ -11,13 +11,18 @@ function Card({ study }: { study: CaseStudy }) {
       href={`/work/${study.slug}`}
       className="group relative block w-[280px] shrink-0 overflow-hidden rounded-[20px] border border-white/8 sm:w-[380px] lg:w-[460px]"
     >
-      <div className="relative aspect-[16/10]">
+      <div className={cn("relative", study.imageAspectClass ?? "aspect-[16/10]")}>
         <Image
           src={study.image}
           alt={study.title}
           fill
           sizes="(max-width: 640px) 280px, (max-width: 1024px) 380px, 460px"
-          className="object-cover transition duration-700 group-hover:scale-105"
+          className={cn(
+            "object-cover",
+            !study.imageAspectClass && "transition duration-700 group-hover:scale-105",
+            study.imageClassName,
+          )}
+          key={study.image}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         <div className="absolute bottom-4 left-4 right-4">

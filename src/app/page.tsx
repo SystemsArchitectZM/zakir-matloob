@@ -18,9 +18,9 @@ export default function Home() {
       <Trusted />
       <Impact />
       <SocialProof />
+      <CaseStudies />
       <WhyPartner />
       <AnalogFeature />
-      <CaseStudies />
       <Experience />
       <ImpactCarousel />
       <JournalPreview />

@@ -31,7 +31,7 @@ export default async function JournalPostPage({
         </p>
         <h1 className="mt-4 font-display text-4xl font-bold leading-tight md:text-5xl">{post.title}</h1>
         <div className="relative mt-10 aspect-[16/9] overflow-hidden rounded-3xl">
-          <Image src={post.image} alt="" fill sizes="(max-width: 760px) 100vw, 760px" className="object-cover" priority />
+          <Image src={post.image} alt="" fill sizes="(max-width: 760px) 100vw, 760px" className="object-cover" key={post.image} priority />
         </div>
         <div className="mt-10 space-y-6 text-base leading-8 text-ink/85 md:text-lg">
           {post.body.map((paragraph) => (
