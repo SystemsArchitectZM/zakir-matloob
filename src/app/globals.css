@@ -61,9 +61,14 @@ body.nav-open {
   color: white;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Keep this in @layer base so Tailwind color utilities (e.g. text-ink on
+   <Link>) can override inherit. Unlayered `color: inherit` made the nav
+   "Book a Call" label vanish on dark headers (white text on a white pill). */
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 button,
@@ -286,6 +291,15 @@ textarea {
 .grain-shift {
   /* Slower shift: full-viewport transform was thrashing the compositor. */
   animation: grain-shift 8s steps(4) infinite;
+}
+
+.contact-line:-webkit-autofill,
+.contact-line:-webkit-autofill:hover,
+.contact-line:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--ink);
+  caret-color: var(--orange);
+  box-shadow: 0 0 0 1000px var(--paper) inset;
+  transition: background-color 9999s ease-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
