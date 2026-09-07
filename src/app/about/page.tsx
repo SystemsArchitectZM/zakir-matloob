@@ -16,7 +16,7 @@ export default function AboutPage() {
         description={site.headline}
       />
 
-      <section className="mx-auto grid max-w-[1200px] gap-12 px-5 pb-24 md:grid-cols-[0.9fr_1.1fr] md:px-8">
+      <section className="mx-auto grid max-w-[1200px] items-start gap-10 px-5 pb-24 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] md:items-center md:gap-14 md:px-8">
         <Reveal>
           <div className="relative overflow-hidden rounded-[28px]">
             <div className="relative aspect-[3/4]">
@@ -31,11 +31,11 @@ export default function AboutPage() {
             </div>
           </div>
         </Reveal>
-        <div>
-          <p className="text-lg leading-relaxed text-ink/80">
-            I am {site.name}, a software engineer working across web platforms, applied AI, and SAP-adjacent enterprise systems. I currently serve as Information Technology Officer at Fauji Fertilizer Company, build production software with Metavision IT, and lead full-stack delivery for Har Aik Global Associates.
+        <div className="flex flex-col justify-center md:max-w-[36rem] md:py-2">
+          <p className="text-lg leading-relaxed text-ink/80 md:text-[1.125rem] md:leading-[1.75]">
+            I am {site.name}, a software engineer working across web platforms, applied AI, and SAP-adjacent enterprise systems. I currently serve as Information Technology Officer at Fauji Fertilizer Company, build production software with Metavision IT, and lead full-stack delivery for Haraik Global Associates.
           </p>
-          <p className="mt-4 text-lg leading-relaxed text-ink/80">
+          <p className="mt-5 text-lg leading-relaxed text-ink/80 md:text-[1.125rem] md:leading-[1.75]">
             The through-line is translation. A plant, a professional-services firm, and a court archive do not need the same interface — they need software that speaks their language. That is the standard I hold: systems that look considered, and that still hold when the demo is over.
           </p>
           <p className="mt-8 font-mono text-xs uppercase tracking-[0.18em] text-muted">

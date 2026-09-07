@@ -150,7 +150,7 @@ export const experience = [
     ],
   },
   {
-    company: "Har Aik Global Associates",
+    company: "Haraik Global Associates",
     role: "Full-Stack Software Engineer",
     dates: "Jan 2026 — Present",
     location: "Islamabad",
@@ -224,7 +224,7 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "A state-driven engagement platform for an audit and advisory firm — approvals, permissions, and client visibility in one system.",
     challenge:
-      "Har Aik needed a single operating layer for internal staff and clients. Email threads, scattered files, and informal approvals could not survive an audit.",
+      "Haraik needed a single operating layer for internal staff and clients. Email threads, scattered files, and informal approvals could not survive an audit.",
     approach:
       "I designed a Next.js platform around explicit state machines: roles, MFA, document trails, consultation tracking, and automated communications. Every transition is attributable.",
     outcome:

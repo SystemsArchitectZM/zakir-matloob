@@ -7,11 +7,20 @@ import { useEffect, useState } from "react";
 import { nav, site } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
+function isDarkPage(pathname: string) {
+  return pathname === "/journal" || pathname === "/contact" || pathname.startsWith("/work");
+}
+
 export function SiteNav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const onHome = pathname === "/";
+  const dark = open || isDarkPage(pathname);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     document.body.classList.toggle("nav-open", open);
@@ -23,7 +32,7 @@ export function SiteNav() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [pathname]);
 
   // Home uses the in-hero top bar + glass dock.
   if (onHome) return null;
@@ -32,10 +41,14 @@ export function SiteNav() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-          scrolled || open
-            ? "bg-ink/90 text-white backdrop-blur-md"
-            : "bg-paper/80 text-ink backdrop-blur-md",
+          "fixed inset-x-0 top-0 z-50 transition-colors duration-500",
+          dark
+            ? scrolled || open
+              ? "bg-black/90 text-white backdrop-blur-md"
+              : "bg-transparent text-white"
+            : scrolled
+              ? "bg-paper/90 text-ink backdrop-blur-md"
+              : "bg-transparent text-ink",
         )}
       >
         <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-5 md:h-20 md:px-8">
@@ -66,10 +79,7 @@ export function SiteNav() {
           <div className="flex items-center gap-3">
             <Link
               href="/contact"
-              className={cn(
-                "hidden items-center overflow-hidden rounded-full pl-4 text-sm font-medium shadow-sm sm:inline-flex",
-                scrolled || open ? "bg-white text-ink" : "bg-white text-ink",
-              )}
+              className="hidden items-center overflow-hidden rounded-full bg-white pl-4 text-sm font-medium text-ink shadow-sm sm:inline-flex"
             >
               <span className="pr-3">Book a Call</span>
               <span className="flex size-10 items-center justify-center bg-orange text-white">
