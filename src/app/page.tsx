@@ -1,5 +1,6 @@
 import { AnalogFeature } from "@/components/sections/analog-feature";
 import { CaseStudies } from "@/components/sections/case-studies";
+import { Collaborators } from "@/components/sections/collaborators";
 import { ContactPanel } from "@/components/sections/contact-panel";
 import { Experience } from "@/components/sections/experience";
 import { Hero } from "@/components/sections/hero";
@@ -23,6 +24,7 @@ export default function Home() {
       <AnalogFeature />
       <Experience />
       <ImpactCarousel />
+      <Collaborators />
       <JournalPreview />
       <Testimonials />
       <ContactPanel />

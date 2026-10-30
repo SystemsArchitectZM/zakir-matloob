@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
 import { Reveal } from "@/components/reveal";
 import { education, experience, services, site, stack } from "@/lib/data";
@@ -24,7 +25,8 @@ export default function AboutPage() {
                 src={site.portrait}
                 alt={site.name}
                 fill
-                className="object-cover object-top"
+                quality={90}
+                className="object-cover object-[center_40%]"
                 sizes="(max-width: 768px) 90vw, 480px"
                 priority
               />
@@ -70,10 +72,12 @@ export default function AboutPage() {
         <h2 className="font-condensed text-5xl">Path</h2>
         <div className="mt-8">
           {experience.map((job) => (
-            <article key={`${job.company}-${job.role}`} className="border-b border-black/10 py-6">
+            <article key={job.slug} className="border-b border-black/10 py-6">
               <p className="text-[11px] uppercase tracking-[0.16em] text-muted">{job.company}</p>
               <h3 className="mt-1 font-display text-xl font-semibold">
-                {job.role} <span className="text-muted">({job.dates})</span>
+                <Link href={`/experience/${job.slug}`} className="hover:text-orange">
+                  {job.role} <span className="text-muted">({job.dates})</span>
+                </Link>
               </h3>
             </article>
           ))}

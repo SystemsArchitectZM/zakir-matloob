@@ -8,7 +8,11 @@ import { nav, site } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 function isDarkPage(pathname: string) {
-  return pathname === "/journal" || pathname.startsWith("/work");
+  return (
+    pathname === "/journal" ||
+    pathname.startsWith("/work") ||
+    pathname.startsWith("/experience")
+  );
 }
 
 export function SiteNav() {

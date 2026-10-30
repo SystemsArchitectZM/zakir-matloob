@@ -13,6 +13,7 @@ export const site = {
     "Zakir Matloob is a software engineer building production web platforms, AI systems, and enterprise SAP-adjacent workflows for organizations that need reliability with taste.",
   url: "https://zakirmatloob.com",
   portrait: "/images/zakir-portrait.jpg",
+  milestonesPortrait: "/images/zakir-milestones-portrait.jpg",
   socials: {
     github: "https://github.com/ZakirCodeArchitect",
     linkedin: "https://www.linkedin.com/in/zakir-matloob",
@@ -147,60 +148,99 @@ export const whyPartner = [
 
 export const experience = [
   {
+    slug: "ffc-it-officer",
     company: "Fauji Fertilizer Company",
     role: "Information Technology Officer",
     dates: "Jul 2026 — Present",
     location: "Lahore",
+    kicker: "Enterprise IT · SAP-adjacent operations",
     bullets: [
       "Own internal systems work at a listed manufacturing enterprise, spanning workflow, reporting, and SAP-adjacent operations.",
       "Mentor incoming engineers on SAP S/4HANA process literacy so software decisions stay tied to how the business actually runs.",
     ],
+    image: "/images/team-briefing.jpg",
+    imageAlt:
+      "Briefing developers at Fauji Fertilizer Company during an internal working session",
+    imageCaption:
+      "A working session with developers at FFC — walking through systems, scope, and how the plant actually operates.",
+    body: [
+      "FFC is not a startup demo. It is a listed manufacturing enterprise, and the interesting work sits next to SAP, reporting, and the quiet contracts between departments. I own internal systems work as Information Technology Officer: workflow, reporting, and the SAP-adjacent operations that have to stay honest when the plant is running.",
+      "A lot of that work happens in rooms like this one. Briefing developers is not a slide deck. It is sitting at the table with laptops open, walking through architecture, permissions, and the process nouns the business already uses — materials, orders, handoffs — so software does not invent a second reality.",
+      "I also mentor incoming engineers on SAP S/4HANA process literacy. The point is not the logo. It is making sure a technical decision can survive contact with how the company actually ships fertilizer, not how a dashboard would like it to.",
+    ],
   },
   {
+    slug: "haraik-full-stack",
     company: "Haraik Global Associates",
     role: "Full-Stack Software Engineer",
     dates: "Jan 2026 — Present",
     location: "Islamabad",
+    kicker: "Audit-ready platforms · applied AI",
     bullets: [
       "Lead end-to-end delivery of audit-ready internal management systems: RBAC, MFA, document workflows, and operational dashboards.",
       "Introduce RAG, vector search, and LLM assistance into firm workflows without sacrificing auditability.",
     ],
+    body: [
+      "At Haraik the brief is an operating system a professional-services firm can defend in an audit. I lead end-to-end delivery of internal management systems: RBAC, MFA, document workflows, and the dashboards partners actually open every morning.",
+      "The interesting constraint is trust. Retrieval, vector search, and LLM assistance are useful only if they leave a trail. I put RAG into firm workflows without letting the model bluff — citations, permissions, and an exit ramp when the corpus is silent.",
+    ],
   },
   {
+    slug: "freelance",
     company: "Freelance",
     role: "Full Stack Developer",
     dates: "2024 — Present",
     location: "Remote",
+    kicker: "Products shipped without a full in-house team",
     bullets: [
       "Build and ship client products end-to-end — Next.js, React, Node.js, and PostgreSQL — from architecture through deployment.",
       "Deliver production work across booking platforms, AI tooling, and documentation systems for startups and operators who need reliable delivery without a full in-house team.",
     ],
+    body: [
+      "Freelance is where I still own the whole path: architecture, interface, data, and deployment. Clients are operators who need a product that holds, not a prototype that impresses for a week.",
+      "The work spans booking platforms, AI tooling, and documentation systems — Next.js, React, Node.js, and PostgreSQL — carried from first conversation through production.",
+    ],
   },
   {
+    slug: "metavision-software-engineer",
     company: "Metavision IT",
     role: "Software Engineer",
     dates: "Dec 2025 — Present",
     location: "Islamabad",
+    kicker: "Production web applications",
     bullets: [
       "Design and ship production web applications with Next.js, React, Node.js, and PostgreSQL across frontend, backend, and infrastructure.",
     ],
+    body: [
+      "At Metavision I design and ship production web applications across frontend, backend, and infrastructure. The stack is familiar on purpose: Next.js, React, Node.js, PostgreSQL — so the interesting work is reliability, not novelty.",
+    ],
   },
   {
+    slug: "metavision-junior",
     company: "Metavision IT",
     role: "Junior Software Developer",
     dates: "May 2025 — Dec 2025",
     location: "Islamabad",
+    kicker: "Learning how production teams ship",
     bullets: [
       "Took ownership of React surfaces, API logic, and data-consistency bugs while learning how production teams actually ship.",
     ],
+    body: [
+      "This was the stretch where I stopped waiting for tickets to be perfect. I took ownership of React surfaces, API logic, and the data-consistency bugs that teach you how a production team actually ships.",
+    ],
   },
   {
+    slug: "my-tutor-source",
     company: "My Tutor Source",
     role: "Computer Science Tutor",
     dates: "Jul 2024 — Mar 2025",
     location: "Remote · UAE students",
+    kicker: "Teaching the craft, not the syllabus",
     bullets: [
       "Taught Cambridge O Level and A Level computer science to international students — structure, problem-solving, and exam craft.",
+    ],
+    body: [
+      "I taught Cambridge O Level and A Level computer science to students in the UAE. The work was structure, problem-solving, and exam craft — making the subject a language someone can use, not a list of facts to memorize.",
     ],
   },
 ];
@@ -490,6 +530,75 @@ export const videoTestimonials = [
     quote:
       "He treats performance and permissions as product features, not as chores for later.",
     image: "/images/testimonial-sania-color.png",
+  },
+];
+
+export const collaborators = [
+  {
+    name: "Shoab",
+    role: "Forward Deployed Engineer",
+    focus: "Embedded with the client",
+    summary:
+      "Ships inside the environment where the software has to survive — live integrations, edge cases, and the last mile of delivery.",
+    specialties: [
+      "Production debugging on the client’s own stack",
+      "Integrations against live operational systems",
+      "Turning field constraints into engineering work",
+      "Rollout, handover, and support after the ship",
+    ],
+    image: "/images/collaborator-shoab.jpg",
+  },
+  {
+    role: "Cloud Engineer",
+    focus: "Infrastructure and reliability",
+    summary:
+      "Owns the path the products run on — environments, pipelines, and the reliability work that keeps a launch from becoming an incident.",
+    specialties: [
+      "Cloud architecture and environment design",
+      "Containers, deployments, and CI/CD",
+      "Observability, uptime, and cost control",
+      "Networking, access, and secure operations",
+    ],
+    image: "/images/collaborator-cloud-portrait.jpg",
+  },
+  {
+    role: "Full-Stack Web Developer",
+    focus: "Product surfaces and APIs",
+    summary:
+      "Builds the web product end to end — the interface, the application logic, and the data layer behind it.",
+    specialties: [
+      "Next.js and React product interfaces",
+      "API design and backend services",
+      "PostgreSQL data models and authentication",
+      "Features carried from UI through deployment",
+    ],
+    image: "/images/collaborator-fullstack.jpg",
+  },
+  {
+    role: "Trucking Operations",
+    focus: "Fleet, dispatch, and the company",
+    summary:
+      "Works with a trucking company day to day — the people, the loads, and the systems that keep freight moving.",
+    specialties: [
+      "Dispatch and load coordination",
+      "Fleet operations and driver workflows",
+      "Compliance, records, and company management",
+      "Software shaped around how a trucking desk runs",
+    ],
+    image: "/images/collaborator-trucking.jpg",
+  },
+  {
+    role: "Client Delivery",
+    focus: "Clients, scope, and the relationship",
+    summary:
+      "Sits on the client side of the work — requirements, communication, and keeping delivery aligned with what was promised.",
+    specialties: [
+      "Client communication and expectation setting",
+      "Requirements, scope, and prioritization",
+      "Coordination across the engineering team",
+      "Stakeholder feedback turned into clear work",
+    ],
+    image: "/images/collaborator-client.jpg",
   },
 ];
 

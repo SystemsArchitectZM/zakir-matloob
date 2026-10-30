@@ -33,7 +33,8 @@ export function Impact() {
                 src={site.portrait}
                 alt=""
                 fill
-                className="object-cover object-top"
+                quality={90}
+                className="object-cover object-[center_22%]"
                 sizes="220px"
               />
             </div>
