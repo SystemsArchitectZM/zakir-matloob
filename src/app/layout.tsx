@@ -1,57 +1,55 @@
 import type { Metadata } from "next";
-import {
-  Bebas_Neue,
-  Bricolage_Grotesque,
-  Geist,
-  Geist_Mono,
-  Instrument_Serif,
-  Jost,
-  Syne,
-} from "next/font/google";
+import localFont from "next/font/local";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Providers } from "@/components/providers";
 import "./globals.css";
 import { site } from "@/lib/data";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const syne = Syne({
+const syne = localFont({
+  src: "./fonts/syne.woff2",
   variable: "--font-syne",
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
+  weight: "500 800",
+  display: "swap",
 });
 
-const bricolage = Bricolage_Grotesque({
+const bricolage = localFont({
+  src: "./fonts/bricolage-grotesque.woff2",
   variable: "--font-bricolage",
-  subsets: ["latin"],
-  axes: ["opsz", "wdth"],
+  weight: "200 800",
+  display: "swap",
 });
 
-const instrumentSerif = Instrument_Serif({
+const instrumentSerif = localFont({
+  src: [
+    {
+      path: "./fonts/instrument-serif.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/instrument-serif-italic.woff2",
+      weight: "400",
+      style: "italic",
+    },
+  ],
   variable: "--font-instrument-serif",
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
+  display: "swap",
 });
 
-const bebas = Bebas_Neue({
+const bebas = localFont({
+  src: "./fonts/bebas-neue.woff2",
   variable: "--font-bebas",
-  subsets: ["latin"],
   weight: "400",
+  display: "swap",
 });
 
-const jost = Jost({
+const jost = localFont({
+  src: "./fonts/jost.woff2",
   variable: "--font-jost",
-  subsets: ["latin"],
-  weight: ["300", "400"],
+  weight: "300 400",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -73,7 +71,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} ${bricolage.variable} ${instrumentSerif.variable} ${bebas.variable} ${jost.variable} h-full antialiased`}
+      className={`${GeistSans.variable} ${GeistMono.variable} ${syne.variable} ${bricolage.variable} ${instrumentSerif.variable} ${bebas.variable} ${jost.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-paper text-ink">
         <Providers>{children}</Providers>
