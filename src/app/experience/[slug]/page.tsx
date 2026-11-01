@@ -68,7 +68,7 @@ export default async function ExperienceChapterPage({
                 <div className="relative aspect-[4/3] overflow-hidden bg-black">
                   <Image
                     src={job.image}
-                    alt={job.imageAlt ?? job.company}
+                    alt={job.imageAlt || job.company}
                     fill
                     priority
                     quality={90}
