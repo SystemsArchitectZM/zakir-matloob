@@ -18,11 +18,16 @@ export function Collaborators() {
   const active = collaborators[index];
 
   useEffect(() => {
-    const scroller = scrollerRef.current;
     const card = cardRefs.current[index];
-    if (!scroller || !card) return;
-    const left = card.offsetLeft - (scroller.clientWidth - card.clientWidth) / 2;
-    scroller.scrollTo({ left, behavior: "smooth" });
+    if (!card) return;
+    const frame = window.requestAnimationFrame(() => {
+      card.scrollIntoView({
+        inline: "center",
+        block: "nearest",
+        behavior: "smooth",
+      });
+    });
+    return () => window.cancelAnimationFrame(frame);
   }, [index]);
 
   useEffect(() => {
@@ -74,54 +79,58 @@ export function Collaborators() {
 
         <div
           ref={scrollerRef}
-          className="mt-14 h-[400px] overflow-x-auto overflow-y-hidden scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:h-[520px]"
+          className="mt-14 flex h-[400px] snap-x snap-mandatory items-end gap-3 overflow-x-auto overflow-y-hidden scroll-smooth overscroll-x-contain [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:h-[520px] md:gap-6"
         >
-          <div className="flex h-full snap-x snap-mandatory items-end gap-4 md:gap-6">
-            {collaborators.map((person, i) => {
-              const focused = i === index;
-              return (
-                <button
-                  key={person.role}
-                  type="button"
-                  ref={(el) => {
-                    cardRefs.current[i] = el;
-                  }}
-                  onClick={() => {
-                    setIndex(i);
-                    if (focused) setOpen(true);
-                  }}
-                  aria-label={`${person.name ?? person.role}, ${person.role}. ${focused ? "View details" : "Select"}`}
+          {collaborators.map((person, i) => {
+            const focused = i === index;
+            return (
+              <button
+                key={person.name ?? person.role}
+                type="button"
+                ref={(el) => {
+                  cardRefs.current[i] = el;
+                }}
+                onClick={() => {
+                  setIndex(i);
+                  if (focused) setOpen(true);
+                }}
+                aria-label={`${person.name ?? person.role}, ${person.role}. ${focused ? "View details" : "Select"}`}
+                className={cn(
+                  "relative shrink-0 snap-center overflow-hidden rounded-[28px] bg-black",
+                  "w-[calc(100%-1.25rem)] min-w-[calc(100%-1.25rem)]",
+                  "sm:min-w-0 sm:transition-[width,height,filter] sm:duration-500 sm:ease-out",
+                  focused
+                    ? "h-full grayscale-0 sm:w-[min(78vw,320px)]"
+                    : "h-[82%] grayscale md:h-[78%] sm:w-[min(58vw,220px)]",
+                )}
+              >
+                <Image
+                  src={person.image}
+                  alt={person.name ?? person.role}
+                  fill
+                  sizes="320px"
                   className={cn(
-                    "relative shrink-0 snap-center overflow-hidden rounded-[28px]",
-                    "transition-[width,height,filter] duration-500 ease-out",
-                    focused
-                      ? "h-full w-[min(78vw,320px)] grayscale-0"
-                      : "h-[82%] w-[min(58vw,220px)] grayscale md:h-[78%]",
+                    "object-cover object-top transition-[filter] duration-500 ease-out",
+                    focused ? "grayscale-0" : "grayscale",
+                  )}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent" />
+                <div
+                  className={cn(
+                    "absolute inset-x-0 bottom-0 px-5 pb-6 pt-16 text-left sm:px-5 sm:pb-5",
+                    !focused && "max-sm:opacity-0",
                   )}
                 >
-                  <Image
-                    src={person.image}
-                    alt={person.name ?? person.role}
-                    fill
-                    sizes="320px"
-                    className={cn(
-                      "object-cover object-top transition-[filter] duration-500 ease-out",
-                      focused ? "grayscale-0" : "grayscale",
-                    )}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-3 text-left sm:bottom-5 sm:left-5 sm:right-4">
-                    <p className="font-display text-lg font-bold leading-tight sm:text-xl">
-                      {person.name ?? person.role}
-                    </p>
-                    <p className="mt-1 text-xs text-white/70 sm:text-sm">
-                      {person.name ? person.role : person.focus}
-                    </p>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
+                  <p className="font-display text-[1.05rem] font-bold leading-tight break-words sm:text-xl">
+                    {person.name ?? person.role}
+                  </p>
+                  <p className="mt-1 text-xs leading-snug text-white/70 break-words sm:text-sm">
+                    {person.name ? person.role : person.focus}
+                  </p>
+                </div>
+              </button>
+            );
+          })}
         </div>
 
         <Reveal>
@@ -158,7 +167,7 @@ export function Collaborators() {
             className="grid max-h-[min(92vh,760px)] w-full max-w-3xl overflow-hidden rounded-[28px] bg-[#111] text-white shadow-2xl sm:grid-cols-[240px_1fr] md:grid-cols-[280px_1fr]"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="relative h-56 sm:h-auto">
+            <div className="relative h-56 bg-black sm:h-auto">
               <Image
                 src={active.image}
                 alt=""

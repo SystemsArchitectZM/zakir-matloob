@@ -55,7 +55,7 @@ export default async function ExperienceChapterPage({
           </div>
 
           {"image" in job && job.image ? (
-            <figure className="relative mx-auto w-[min(100%,280px)] shrink-0 lg:mx-0 lg:mt-6">
+            <figure className="relative mx-auto w-[min(100%,340px)] shrink-0 lg:mx-0 lg:mt-6">
               <div
                 aria-hidden
                 className="absolute -top-3 left-8 z-10 h-7 w-[4.25rem] rotate-[-18deg] bg-[#f4f1ed]/55 shadow-[0_1px_2px_rgba(0,0,0,0.35)]"
@@ -71,9 +71,9 @@ export default async function ExperienceChapterPage({
                     alt={job.imageAlt || job.company}
                     fill
                     priority
-                    quality={90}
-                    sizes="280px"
-                    className="object-cover object-[center_42%]"
+                    quality={95}
+                    sizes="400px"
+                    className="object-cover object-[center_45%]"
                   />
                 </div>
                 {job.imageCaption ? (

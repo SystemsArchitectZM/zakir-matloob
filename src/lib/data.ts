@@ -158,7 +158,7 @@ export const experience = [
       "Own internal systems work at a listed manufacturing enterprise, spanning workflow, reporting, and SAP-adjacent operations.",
       "Mentor incoming engineers on SAP S/4HANA process literacy so software decisions stay tied to how the business actually runs.",
     ],
-    image: "/images/team-briefing.jpg",
+    image: "/images/team-briefing-clear.jpg",
     imageAlt:
       "Briefing developers at Fauji Fertilizer Company during an internal working session",
     imageCaption:
@@ -535,7 +535,21 @@ export const videoTestimonials = [
 
 export const collaborators = [
   {
-    name: "Shoab",
+    name: "Ali Qadeer",
+    role: "Business Developer",
+    focus: "Clients, scope, and the relationship",
+    summary:
+      "Sits on the client side of the work — requirements, communication, and keeping delivery aligned with what was promised.",
+    specialties: [
+      "Client communication and expectation setting",
+      "Requirements, scope, and prioritization",
+      "Coordination across the engineering team",
+      "Stakeholder feedback turned into clear work",
+    ],
+    image: "/images/collaborator-ali-qadeer.jpg",
+  },
+  {
+    name: "Shoaib",
     role: "Forward Deployed Engineer",
     focus: "Embedded with the client",
     summary:
@@ -549,6 +563,7 @@ export const collaborators = [
     image: "/images/collaborator-shoab.jpg",
   },
   {
+    name: "Shahzaib",
     role: "Cloud Engineer",
     focus: "Infrastructure and reliability",
     summary:
@@ -562,6 +577,7 @@ export const collaborators = [
     image: "/images/collaborator-cloud-portrait.jpg",
   },
   {
+    name: "Awais Farooq",
     role: "Full-Stack Web Developer",
     focus: "Product surfaces and APIs",
     summary:
@@ -572,10 +588,11 @@ export const collaborators = [
       "PostgreSQL data models and authentication",
       "Features carried from UI through deployment",
     ],
-    image: "/images/collaborator-fullstack.jpg",
+    image: "/images/collaborator-awais-portrait.jpg",
   },
   {
-    role: "Trucking Operations",
+    name: "Waqas",
+    role: "Trucking Operations Manager",
     focus: "Fleet, dispatch, and the company",
     summary:
       "Works with a trucking company day to day — the people, the loads, and the systems that keep freight moving.",
@@ -585,20 +602,7 @@ export const collaborators = [
       "Compliance, records, and company management",
       "Software shaped around how a trucking desk runs",
     ],
-    image: "/images/collaborator-trucking.jpg",
-  },
-  {
-    role: "Client Delivery",
-    focus: "Clients, scope, and the relationship",
-    summary:
-      "Sits on the client side of the work — requirements, communication, and keeping delivery aligned with what was promised.",
-    specialties: [
-      "Client communication and expectation setting",
-      "Requirements, scope, and prioritization",
-      "Coordination across the engineering team",
-      "Stakeholder feedback turned into clear work",
-    ],
-    image: "/images/collaborator-client.jpg",
+    image: "/images/collaborator-waqas.jpg",
   },
 ];
 
