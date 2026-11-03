@@ -45,7 +45,7 @@ export function Hero() {
             <div className="hidden items-end justify-between gap-10 lg:flex">
               <div className="relative max-w-[190px] shrink-0">
                 <p className="text-right text-sm font-medium leading-snug text-ink/75">
-                  12+ Completed
+                  6+ Completed
                   <br />
                   Projects
                 </p>
@@ -75,7 +75,7 @@ export function Hero() {
                 <div className="rounded-2xl border border-black/8 bg-white/80 p-4 shadow-[0_16px_40px_rgba(40,30,20,0.08)] backdrop-blur-md">
                   <p className="text-sm font-semibold text-ink">2+ Years of Experience</p>
                   <p className="mt-2 text-[12px] leading-relaxed text-ink/65">
-                    Full-stack, applied AI, and SAP-adjacent systems — clean delivery with
+                    Full-stack, applied AI, and SAP-adjacent systems, clean delivery with
                     enterprise constraints attached.
                   </p>
                 </div>
